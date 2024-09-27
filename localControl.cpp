@@ -69,8 +69,8 @@ void stopX() {
 void moveYInside()
 {
 	uInt8 p = readDigitalU8(4);
-	setBitValue(p, 3, 0); 
-	setBitValue(p, 4, 1);	
+	setBitValue(p, 3, 0);
+	setBitValue(p, 4, 1);
 	writeDigitalU8(4, p);
 }
 
@@ -152,7 +152,59 @@ void showPortsInformation() {
 	printf("\n");
 }
 
+void moveLeftStationInside()
+{
+	uInt8 p4 = readDigitalU8(4);
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p4, 7, 1);
+	setBitValue(p5, 0, 0);
+	writeDigitalU8(4, p4);
+	writeDigitalU8(5, p5);
+}
 
+void moveLeftStationOutside()
+{
+	uInt8 p4 = readDigitalU8(4);
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p4, 7, 0);
+	setBitValue(p5, 0, 1);
+	writeDigitalU8(4, p4);
+	writeDigitalU8(5, p5);
+}
+
+void stopLeftStation()
+{
+	uInt8 p4 = readDigitalU8(4);
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p4, 7, 0);
+	setBitValue(p5, 0, 0);
+	writeDigitalU8(4, p4);
+	writeDigitalU8(5, p5);
+}
+
+void moveRightStationInside()
+{
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p5, 1, 1);
+	setBitValue(p5, 2, 0);
+	writeDigitalU8(5, p5);
+}
+
+void moveRightStationOutside()
+{
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p5, 1, 0);
+	setBitValue(p5, 2, 1);
+	writeDigitalU8(5, p5);
+}
+
+void stopRightStation()
+{
+	uInt8 p5 = readDigitalU8(5);
+	setBitValue(p5, 1, 0);
+	setBitValue(p5, 2, 0);
+	writeDigitalU8(5, p5);
+}
 
 
 void showStates() {
@@ -197,12 +249,12 @@ void executeLocalControl(int keyboard) {
 	case 's': stopZ(); break;
 
 		// Uncomment the lines below when implementing station control
-		// case 'r': moveLeftStationInside(); break;
-		// case 'v': moveLeftStationOutside(); break;
-		// case 'f': stopLeftStation(); break;
-		// case 't': moveRightStationInside(); break;
-		// case 'b': moveRightStationOutside(); break;
-		// case 'g': stopRightStation(); break;
+	case 'r': moveLeftStationInside(); break;
+	case 'v': moveLeftStationOutside(); break;
+	case 'f': stopLeftStation(); break;
+	case 't': moveRightStationInside(); break;
+	case 'b': moveRightStationOutside(); break;
+	case 'g': stopRightStation(); break;
 
 	case 'p': showPortsInformation(); break;
 	case 'm': showLocalMenu(); break;
