@@ -20,7 +20,7 @@ void initializeHardwarePorts() {
 	createDigitalOutput(4);
 	createDigitalOutput(5);
 
-	writeDigitalU8(4, 0);
+	writeDigitalU8(4, 0);		// porta, dados a escrever
 	writeDigitalU8(5, 0);
 }
 
@@ -60,6 +60,57 @@ void stopX() {
 	setBitValue(p, 1, 0);
 	writeDigitalU8(4, p);
 }
+
+
+
+
+// ----------------------- Y controls -----------------------
+//	bit organization logic: XRightXLeftXX YYZZ
+void moveYInside()
+{
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 3, 0); 
+	setBitValue(p, 4, 1);	
+	writeDigitalU8(4, p);
+}
+
+void moveYOutside()
+{
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 3, 1);
+	setBitValue(p, 4, 0);
+	writeDigitalU8(4, p);
+}
+void stopY() {
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 3, 0);
+	setBitValue(p, 4, 0);
+	writeDigitalU8(4, p);
+}
+
+// ----------------------- Z controls -----------------------
+void moveZUp()
+{
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 5, 1);
+	setBitValue(p, 6, 0);
+	writeDigitalU8(4, p);
+}
+
+void moveZDown()
+{
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 5, 0);
+	setBitValue(p, 6, 1);
+	writeDigitalU8(4, p);
+}
+void stopZ() {
+	uInt8 p = readDigitalU8(4);
+	setBitValue(p, 5, 0);
+	setBitValue(p, 6, 0);
+	writeDigitalU8(4, p);
+}
+
 
 int getXPosition() {
 	int pp[10] = { 0,0,0,0,0,0,0,0,1,1 };
@@ -101,7 +152,7 @@ void showPortsInformation() {
 	printf("\n");
 }
 
-// ----------------------- Y controls -----------------------
+
 
 
 void showStates() {
@@ -130,25 +181,28 @@ void showLocalMenu() {
 
 void executeLocalControl(int keyboard) {
 	switch (keyboard) {
+		// X axis control
 	case 'q': moveXRight(); break;
 	case 'z': moveXLeft(); break;
 	case 'a': stopX(); break;
 
-	// Uncomment the lines below when implementing Y and Z movements
+		// Y axis control
 	case 'e': moveYInside(); break;
 	case 'c': moveYOutside(); break;
 	case 'd': stopY(); break;
+
+		// Z axis control
 	case 'w': moveZUp(); break;
 	case 'x': moveZDown(); break;
 	case 's': stopZ(); break;
 
-	// Uncomment the lines below when implementing station control
-	// case 'r': moveLeftStationInside(); break;
-	// case 'v': moveLeftStationOutside(); break;
-	// case 'f': stopLeftStation(); break;
-	// case 't': moveRightStationInside(); break;
-	// case 'b': moveRightStationOutside(); break;
-	// case 'g': stopRightStation(); break;
+		// Uncomment the lines below when implementing station control
+		// case 'r': moveLeftStationInside(); break;
+		// case 'v': moveLeftStationOutside(); break;
+		// case 'f': stopLeftStation(); break;
+		// case 't': moveRightStationInside(); break;
+		// case 'b': moveRightStationOutside(); break;
+		// case 'g': stopRightStation(); break;
 
 	case 'p': showPortsInformation(); break;
 	case 'm': showLocalMenu(); break;

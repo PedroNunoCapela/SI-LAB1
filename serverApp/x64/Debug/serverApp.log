@@ -1,5 +1,2 @@
 ﻿  localControl.cpp
-  serverApp.cpp
-  warehouseWebServer.cpp
-  Gerando Código...
   serverApp.vcxproj -> E:\MERSIM\SI\LABS\LAB1\serverApp\x64\Debug\serverApp.exe
