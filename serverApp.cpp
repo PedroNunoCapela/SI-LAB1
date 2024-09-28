@@ -5,6 +5,7 @@
 #include <warehouseWebServer.h>
 #include <niDAQWebInterface.h>
 #include <localControl.h>
+#include <MQTT_client.h>
 
 int main() {
 	printf("Welcome to Intelligent Supervision\n");
@@ -13,6 +14,9 @@ int main() {
 	configure_simulator_server();
 	start_mg_server();
 	initializeHardwarePorts();
+
+	startMQTTActuatorsOperation();
+	startMqttSensorsOperation();
 
 	int keyboard = 0;
 

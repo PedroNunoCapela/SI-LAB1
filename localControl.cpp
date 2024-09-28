@@ -47,6 +47,7 @@ void moveXRight() {
 	writeDigitalU8(4, p);
 }
 
+// bit map: 7 6 5 4 3 2 1 0
 void moveXLeft() {
 	uInt8 p = readDigitalU8(4);
 	setBitValue(p, 0, 0);
@@ -111,7 +112,6 @@ void stopZ() {
 	writeDigitalU8(4, p);
 }
 
-
 int getXPosition() {
 	int pp[10] = { 0,0,0,0,0,0,0,0,1,1 };
 	int bb[10] = { 0,1,2,3,4,5,6,7,0,1 };
@@ -128,11 +128,64 @@ int getXPosition() {
 	return (-1);
 }
 
+int getYPosition()
+{
+
+	return 0;
+}
+
 int getXDirection() {
 	uInt8 p4 = readDigitalU8(4);
 	if (getBitValue(p4, 0)) // moving right?
 		return 1;
 	if (getBitValue(p4, 1)) // moving left?
+		return -1;
+	return 0; // not moving.
+}
+
+int getYDirection()
+{
+	uInt8 p4 = readDigitalU8(4);
+	if (getBitValue(p4, 4)) // moving inside the storage?
+		return 1;
+	if (getBitValue(p4, 3)) // moving outside the storage?
+		return -1;
+	return 0; // not moving.
+}
+
+int getZDirection()
+{
+	uInt8 p4 = readDigitalU8(4);
+	if (getBitValue(p4, 5)) // moving up the storage?
+		return 1;
+	if (getBitValue(p4, 6)) // moving down the storage?
+		return -1;
+	return 0; // not moving.
+}
+
+float getZPosition() {
+	
+	return 0;
+}
+
+
+int getLeftStationDirection()
+{
+	uInt8 p4 = readDigitalU8(4);
+	uInt8 p5 = readDigitalU8(5);
+	if (getBitValue(p4, 7)) // moving inside the storage?
+		return 1;
+	if (getBitValue(p5, 0)) // moving outside the storage?
+		return -1;
+	return 0; // not moving.
+}
+
+int getRightStationDirection()
+{
+	uInt8 p5 = readDigitalU8(5);
+	if (getBitValue(p5, 1)) // moving inside the storage?
+		return 1;
+	if (getBitValue(p5, 2)) // moving outside the storage?
 		return -1;
 	return 0; // not moving.
 }
@@ -207,15 +260,44 @@ void stopRightStation()
 }
 
 
+// P3 bit 7 changes whenever a package passes the sensor
+int isPartOnLeftStation()
+{
+	uInt8 p3 = readDigitalU8(3);		// reading port 3
+	if (getBitValue(p3, 0))				// bit active?
+		return 1;
+	return 0;
+}
+
+// P3 bit 6 changes whenever a package passes the sensor
+int isPartOnRightStation()
+{
+	uInt8 p3 = readDigitalU8(3);		// reading port 3
+	int x = getBitValue(p3, 1);
+	if (getBitValue(p3, 1))				// bit active?
+		return 1;
+	return 0;
+}
+
+// P1 bit 3 changes whenever a package passes the sensor
+bool isPartInCage()
+{
+	uInt8 p1 = readDigitalU8(3);		// reading port 1
+	if (!getBitValue(p1, 3))				// bit active?
+		return true;
+	return false;
+}
+
+
 void showStates() {
 	printf("\nX:\t\t position(%d), direction(%d) ", getXPosition(), getXDirection());
-	// Uncomment the lines below when implementing Z and Y movements
-	// printf("\nZ:\t\t position(%d), direction(%d) ", getZPosition(), getZDirection());
-	// printf("\nY:\t\t position(%d), direction(%d) ", getYPosition(), getYDirection());
+	
+	printf("\nZ:\t\t position(%d), direction(%d) ", getZPosition(), getZDirection());
+	printf("\nY:\t\t position(%d), direction(%d) ", getYPosition(), getYDirection());
 
-	// printf("\nleftStation..:\t has_part(%d), direction(%d) ", isPartOnLeftStation(), getLeftStationDirection());
-	// printf("\nrightStation.:\t has_part(%d), direction(%d) ", isPartOnRightStation(), getRightStationDirection());
-	// printf("\nCAGE:\t\t has_part(%d)", isPartInCage());
+	printf("\nleftStation..:\t has_part(%d), direction(%d) ", isPartOnLeftStation(), getLeftStationDirection());
+	printf("\nrightStation.:\t has_part(%d), direction(%d) ", isPartOnRightStation(), getRightStationDirection());
+	printf("\nCAGE:\t\t 1(%d)", isPartInCage());
 }
 
 void showLocalMenu() {
@@ -248,7 +330,6 @@ void executeLocalControl(int keyboard) {
 	case 'x': moveZDown(); break;
 	case 's': stopZ(); break;
 
-		// Uncomment the lines below when implementing station control
 	case 'r': moveLeftStationInside(); break;
 	case 'v': moveLeftStationOutside(); break;
 	case 'f': stopLeftStation(); break;

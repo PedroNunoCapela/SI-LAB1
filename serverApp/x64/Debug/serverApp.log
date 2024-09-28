@@ -1,2 +1,3 @@
 ﻿  localControl.cpp
+E:\MERSIM\SI\LABS\LAB1\serverApp\localControl.cpp(295,9): warning C4477: 'printf': a cadeia de formato '%d' requer um argumento do tipo 'int', mas um argumento variadic 1 tem o tipo 'double'
   serverApp.vcxproj -> E:\MERSIM\SI\LABS\LAB1\serverApp\x64\Debug\serverApp.exe

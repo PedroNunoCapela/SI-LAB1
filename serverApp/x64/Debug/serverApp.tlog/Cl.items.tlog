@@ -1,5 +1,7 @@
 E:\MERSIM\SI\LABS\LAB1\serverApp\localControl.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\localControl.obj
+E:\MERSIM\SI\LABS\LAB1\serverApp\MQTT_client.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\MQTT_client.obj
 E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\serverApp.obj
 E:\MERSIM\SI\LABS\LAB1\serverApp\source\mongoose.c;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\mongoose.obj
+E:\MERSIM\SI\LABS\LAB1\serverApp\source\MqttClientManager.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\MqttClientManager.obj
 E:\MERSIM\SI\LABS\LAB1\serverApp\source\niDAQWebInterface.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\niDAQWebInterface.obj
 E:\MERSIM\SI\LABS\LAB1\serverApp\source\warehouseWebServer.cpp;E:\MERSIM\SI\LABS\LAB1\serverApp\serverApp\x64\Debug\warehouseWebServer.obj

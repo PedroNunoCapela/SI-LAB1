@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;source;E:\MERSIM\SI\LABS\LAB1\serverApp\paho.mqtt.c\include;E:\MERSIM\SI\LABS\LAB1\serverApp\json-develop\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,13 +131,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="localControl.cpp" />
+    <ClCompile Include="MQTT_client.cpp" />
     <ClCompile Include="serverApp.cpp" />
     <ClCompile Include="source\mongoose.c" />
+    <ClCompile Include="source\MqttClientManager.cpp" />
     <ClCompile Include="source\niDAQWebInterface.cpp" />
     <ClCompile Include="source\warehouseWebServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="localControl.h" />
+    <ClInclude Include="MQTT_client.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="paho-mqtt3a.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
