@@ -38,8 +38,7 @@
               "RelativeToolTip": "MQTT_client.cpp",
               "ViewState": "AgIAAEgAAAAAAAAAAAAAAAcBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-28T11:33:38.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T11:33:38.532Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "localControl.cpp",
               "ToolTip": "E:\\MERSIM\\SI\\LABS\\LAB1\\serverApp\\localControl.cpp",
               "RelativeToolTip": "localControl.cpp",
-              "ViewState": "AgIAABIBAAAAAAAAAADwvycBAABSAAAAAAAAAA==",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAswCcBAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-25T20:03:00.804Z",
               "EditorCaption": ""
@@ -68,7 +67,7 @@
               "RelativeDocumentMoniker": "localControl.h",
               "ToolTip": "E:\\MERSIM\\SI\\LABS\\LAB1\\serverApp\\localControl.h",
               "RelativeToolTip": "localControl.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAcwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-27T13:44:40.797Z",
               "EditorCaption": ""
@@ -83,8 +82,7 @@
               "RelativeToolTip": "serverApp.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-28T11:37:56.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T11:37:56.813Z"
             }
           ]
         }

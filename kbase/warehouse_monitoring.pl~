@@ -1,0 +1,15 @@
+:-ensure_loaded('RTXengine/RTXengine').
+:-ensure_loaded(mqtt_prolog_messages).
+
+
+:-dynamic mqtt_monitoring_handler/1.
+create_monitoring_client:-
+    load_mqtt_library,
+    not(mqtt_monitoring_handler(_)),
+    mqtt_broker(Broker_URL), % it is defined in the previous file (right click to see it)
+    mqtt_create_client(client_monitoring, Broker_URL,   Handler),
+    % the Handler is the C/C++ void *pointer inside the DLL.
+    assert(mqtt_monitoring_handler(Handler)),
+    mqtt_connect(Handler, _Result),
+    !;
+    true.
